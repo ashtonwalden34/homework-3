@@ -1,7 +1,17 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var passwordLength = prompt("How long would you like your pass word to be? (8-128 characters)");
+var promptPasswordLength = prompt("How long would you like your pass word to be? (8-128 characters)");
+var passwordLength = parseInt(promptPasswordLength);
+if(passwordLength < 8){
+    alert("Please select a larger number for password length.");
+}
+else if(passwordLength > 128){
+    alert("Please select a smaller number for password length.");
+}
+
+
+
 var confirmLowerCase = confirm("Would you like lower case letters to be included?");
 var confirmUpperCase = confirm("Would you like upper case letters to be included?");
 var confirmNumbers = confirm("Would you like numbers letters to be included?");
@@ -17,39 +27,48 @@ var specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "~", "?", "<", 
 var passwordComponentsArray = []
 function passwordComponents (){
     if (confirmLowerCase)
+    console.log("about to add lower case");
         passwordComponentsArray = passwordComponentsArray.concat(lowerCase);
     if (confirmUpperCase)
-        passwordComponentsArray = passwordComponentsArray.concat(UpperCase);
+        passwordComponentsArray = passwordComponentsArray.concat(upperCase);
     if (confirmLowerCase)
         passwordComponentsArray = passwordComponentsArray.concat(numbers);
     if (confirmLowerCase)
         passwordComponentsArray = passwordComponentsArray.concat(specialCharacters);
 }
 
-console.log("hello");
-console.log (passwordComponentsArray);
+passwordComponents();
 
-passwordLength = parseInt();
+
+
+
+console.log(passwordComponentsArray);
+console.log(passwordComponentsArray[Math.floor(Math.random()*passwordComponentsArray.length)]);
+
+
 
 
 // Write password to the #password input
 function writePassword() {
-    if(passwordLength < 8)
-        alert("Please select a larger number for password length.")
-    else if(passwordLength > 128)
-        alert("Please enter a smaller number for password length.")
-    else{
-        for (i = 0; i < passwordLength; i++){
-            password += passwordComponents[Math.floor(Math.random() * (passwordComponents.length - 1))];
-        }
+    var answer = " ";
+
+    for (var i = 0; i < passwordLength; i++){
+        answer+=passwordComponentsArray[Math.floor(Math.random()*passwordComponentsArray.length)]
     }
-       
-    }
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = answer;
+}
+
+writePassword();
+
+
+
+
 
   //var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+ 
 
-  passwordText.value = password;
 
 
 // Add event listener to generate button
