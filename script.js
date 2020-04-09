@@ -2,14 +2,15 @@
 var generateBtn = document.querySelector("#generate");
 
 var promptPasswordLength = prompt("How long would you like your pass word to be? (8-128 characters)");
-var passwordLength = parseInt(promptPasswordLength);
-if(passwordLength < 8){
+var passwordLength = parseInt(promptPasswordLength); 
+ if (passwordLength < 8){
     alert("Please select a larger number for password length.");
+    
 }
 else if(passwordLength > 128){
     alert("Please select a smaller number for password length.");
+    
 }
-
 
 
 var confirmLowerCase = confirm("Would you like lower case letters to be included?");
@@ -27,25 +28,16 @@ var specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "~", "?", "<", 
 var passwordComponentsArray = []
 function passwordComponents (){
     if (confirmLowerCase)
-    console.log("about to add lower case");
         passwordComponentsArray = passwordComponentsArray.concat(lowerCase);
     if (confirmUpperCase)
         passwordComponentsArray = passwordComponentsArray.concat(upperCase);
-    if (confirmLowerCase)
+    if (confirmNumbers)
         passwordComponentsArray = passwordComponentsArray.concat(numbers);
-    if (confirmLowerCase)
+    if (confirmSpecialCharacters)
         passwordComponentsArray = passwordComponentsArray.concat(specialCharacters);
-}
+};
 
 passwordComponents();
-
-
-
-
-console.log(passwordComponentsArray);
-console.log(passwordComponentsArray[Math.floor(Math.random()*passwordComponentsArray.length)]);
-
-
 
 
 // Write password to the #password input
@@ -61,14 +53,6 @@ function writePassword() {
 }
 
 writePassword();
-
-
-
-
-
-  //var password = generatePassword();
- 
-
 
 
 // Add event listener to generate button
