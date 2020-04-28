@@ -6,14 +6,14 @@ var passwordLength = parseInt(promptPasswordLength);
 
 passwordPrompt();
 
-function passwordPrompt (){
+function passwordPrompt() {
     if (passwordLength < 8){
         alert("Password too short. Please try again.");
-        onreset(passwordPrompt);
+        
     }
     else if (passwordLength > 128){
         alert("Password too long. Please try again.");
-        onreset(passwordPrompt);
+        
     }  
     else {
         var confirmLowerCase = confirm("Would you like lower case letters to be included?");
@@ -38,6 +38,8 @@ function passwordPrompt (){
                 passwordComponentsArray = passwordComponentsArray.concat(numbers);
             if (confirmSpecialCharacters)
                 passwordComponentsArray = passwordComponentsArray.concat(specialCharacters);
+            else 
+                alert("Please try again and select what type of characters you would like included in your password.");
     };
 };
 
@@ -59,7 +61,6 @@ writePassword();
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
 };
 
 
