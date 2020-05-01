@@ -1,4 +1,4 @@
-U of U coding bootcamp - Homework 4 - Password Generator
+Password Generator
 
 Description: This application takes user input and builds a custom password based on the parameters the user has selected.
 
