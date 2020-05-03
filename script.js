@@ -38,7 +38,7 @@ function passwordPrompt() {
                 passwordComponentsArray = passwordComponentsArray.concat(numbers);
             if (confirmSpecialCharacters)
                 passwordComponentsArray = passwordComponentsArray.concat(specialCharacters);
-            else 
+            else if (!confirmLowerCase && !confirmUpperCase && !confirmNumbers && !confirmSpecialCharacters)
                 alert("Please try again and select what type of characters you would like included in your password.");
     };
 };
